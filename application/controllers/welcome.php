@@ -8,7 +8,7 @@
  *
  * ------------------------------------------------------------------------
  */
-class Welcome extends CI_Controller
+class Welcome extends Application
 {
 
 	function __construct()
@@ -22,7 +22,8 @@ class Welcome extends CI_Controller
 
 	function index()
 	{
-		$this->load->view('welcome_message');
+		$this->data['pagebody'] = 'homepage';
+		$this->render();
 	}
 	
 }
