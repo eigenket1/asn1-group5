@@ -37,7 +37,7 @@ class Stock extends Application
 
 	function getMostRecent() {
 		$results = $this->stocks->getRecentCode();
-		
+
 		foreach ($results->result() as $row) {
 			return $row->Code;
 		}
@@ -49,15 +49,15 @@ class Stock extends Application
 		$tablestring = "<table>";
 
 		$tablestring .= "<tr>";
-			
-		$tablestring .= "<td>Code</td><td>Time</td><td>Action</td><td>Amount</td>";
-		
+
+		$tablestring .= "<td>Code</td><td>Time</td><td>Action</td><td>Peanuts</td>";
+
 		$tablestring .= "</tr>";
 
 		foreach ($results->result() as $row) {
 			$tablestring .= "<tr>";
 
-			$tablestring .= "<td>";			
+			$tablestring .= "<td>";
 			$tablestring .= $row->Code;
 			$tablestring .= "</td>";
 			$tablestring .= "<td>";
@@ -69,7 +69,7 @@ class Stock extends Application
 			$tablestring .= "<td>";
 			$tablestring .= $row->Amount;
 			$tablestring .= "</td>";
-			
+
 			$tablestring .= "</tr>";
 		}
 
