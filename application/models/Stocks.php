@@ -16,7 +16,7 @@ class Stocks extends MY_Model {
 	}
 
 
-    function getCodes() {        
+    function getCodes() {
         $result = $this->db->query("SELECT COUNT(*) AS `Rows`, `Code` FROM `stocks` GROUP BY `Code` ORDER BY `Code`");
 
         return $result;
@@ -28,6 +28,7 @@ class Stocks extends MY_Model {
 
         return $result;
     }
+<<<<<<< Updated upstream
 	
 	function getStockValue($stockcode) {
 		$querystring = "SELECT `Value` FROM `stocks` WHERE `Code` = '";
@@ -38,3 +39,15 @@ class Stocks extends MY_Model {
 		return $result;
 	}
 }
+=======
+
+    function getTransactions($stockcode) {
+        $querystring = "SELECT * FROM `transactions` WHERE Stock = \"";
+        $querystring .= $stockcode;
+        $querystring .= "\" ORDER BY Datetime DESC";
+        $result = $this->db->query($querystring);
+
+        return $result;
+    }
+}
+>>>>>>> Stashed changes
