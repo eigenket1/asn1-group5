@@ -40,7 +40,7 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
-$route['stock/([a-zA-Z]{4,4})'] = 'stock/get/$1';
+$route['stock/([a-zA-Z]{3,4})'] = 'stock/get/$1';
 $route['player/(:any)'] = 'player/get/$1';
 
 /* End of file routes.php */
