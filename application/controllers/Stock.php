@@ -80,17 +80,7 @@ class Stock extends Application
 	function getDropdown() {
 		$results = $this->stocks->getCodes();
 
-		// $dropdownstring = "<select name=\"stockChoice\" class=\"form-control\">";
-
-		// $dropdownstring = "<select onChange=\"window.location.href=/stock/\" += this.value;>";
-
 		$dropdownstring = "<select name=\"stockChoice\" onchange=\"this.form.submit()\">";
-
-		// $dropdownstring = "<select onChange=\"window.location.href=/stock/;
-		// $dropdownstring .= "this.value\"";
-		// $dropdownstring .= "this.value";
-		// $dropdownstring .= "'\"">";
-
 		$dropdownstring .= "<option value=\"\"></option>";
 
 		foreach ($results->result() as $row) {
