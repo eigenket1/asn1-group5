@@ -22,8 +22,17 @@
 		<section class="top-bar-section">
 			<!-- Right Nav Section -->
 			<ul class="right">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Stocks</a></li>
+				<li><a href="/">Home</a></li>
+				<li><a href="/stocks">Stocks</a></li>
+				<?php
+					if (isset($player))
+					{
+						echo "<li><a href=\"#\">" .$player ."</a></li>";
+					} else
+					{
+						echo "<li><a href=\"/login\">Login</a></li>";
+					}
+				?>
 			</ul>
 		</section>
 	</nav>
