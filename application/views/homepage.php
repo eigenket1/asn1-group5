@@ -1,1 +1,4 @@
-Homepage
+<table>
+{stocklist}
+{playerlist}
+</table>
