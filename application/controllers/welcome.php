@@ -23,23 +23,30 @@ class Welcome extends Application
 	function index()
 	{
 		$this->data['pagebody'] = 'homepage';
-		$this->data['stocklist'] = $this->getStocks();
+		$this->data['stocklist'] = $this->getStockListings();
 		$this->data['playerlist'] = $this->getPlayers();
 		$this->render();
 	}
 	
-	function getStocks()
+	function getStockListings()
 	{
 		$result = $this->stocks->getCodes();
-		$tablestring = "<tr><td>Code</td></tr>";
+		$tablestring = "<tr><td>Code</td><td>Value</td></tr>";
 		
 		foreach($result->result() as $row)
 		{
-			$tablestring .= "<tr><td><a href=\"stocks\"";
+			$value = $this->stocks->getStockValue($row->Code)->result();
+			
+			$tablestring .= "<tr><td><a href=\"stocks/";
 			$tablestring .= $row->Code;
 			$tablestring .= "\">";
 			$tablestring .= $row->Code;
-			$tablestring .= "</a></td></tr></br>";
+			$tablestring .= "</a></td>";
+			foreach($value as $v)
+			{
+				$tablestring .= "<td>" .$v->Value."</td>";
+			}
+			$tablestring .= "</tr>";
 		}
 		
 		return $tablestring;
