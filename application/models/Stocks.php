@@ -6,14 +6,14 @@ class Stocks extends MY_Model {
         parent::__construct('stocks', 'Code');
     }
 
-    function getStocks($stockcode) {
-        $querystring = "SELECT * FROM `movements` WHERE `Code` = '";
-        $querystring .= $stockcode;
-        $querystring .= "' ORDER BY Datetime DESC";
-        $result = $this->db->query($querystring);
+	function getStocks($stockCode) {
+		$queryString = "SELECT * FROM `movements` WHERE `Code` = '";
+		$queryString .= $stockCode;
+		$queryString .= "' ORDER BY Datetime DESC";
+		$result = $this->db->query($queryString);
 
-        return $result;
-    }
+		return $result;
+	}
 
 
     function getCodes() {        

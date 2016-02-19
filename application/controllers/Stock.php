@@ -81,7 +81,7 @@ class Stock extends Application
 		$results = $this->stocks->getCodes();
 
 		$dropdownstring = "<select name=\"stockChoice\" onchange=\"this.form.submit()\">";
-		$dropdownstring .= "<option value=\"\"></option>";
+		$dropdownstring .= "<option value=\"\">Select a Stock</option>";
 
 		foreach ($results->result() as $row) {
 			$dropdownstring .= "<option value=\"";
