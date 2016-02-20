@@ -11,20 +11,39 @@
 class Login extends Application
 {
 
-	function __construct()
-	{
-		parent::__construct();
-	}
+    function __construct()
+    {
+        parent::__construct();
+        session_start();
+    }
 
-	//-------------------------------------------------------------
-	//  The normal pages
-	//-------------------------------------------------------------
+    /**
+     * Display normal login page
+     */
+    function index()
+    {
+        $this->data['pagebody'] = 'login';
+        $this->render();
+    }
 
-	function index()
-	{
-		$this->data['pagebody'] = 'login';
-		$this->render();
-	}
+    /**
+     * Process fake user login
+     */
+    function login()
+    {
+        $_SESSION['player'] = $_POST['player'];
+        redirect("/");
+    }
+
+    /**
+     * Process user logout
+     */
+    function logout()
+    {
+        $_SESSION['player'] = '';
+        redirect("/");
+    }
+
 }
 
 /* End of file Login.php */
