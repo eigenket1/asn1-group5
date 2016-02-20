@@ -24,7 +24,7 @@ class Welcome extends Application
 	{
 		$this->data['pagebody'] = 'homepage';
 		$this->data['stocklist'] = $this->getStockListings();
-		$this->data['playerlist'] = $this->getPlayers();
+		$this->data['playerlist'] = $this->getPlayerListing();
 		$this->render();
 	}
 	
@@ -52,26 +52,20 @@ class Welcome extends Application
 		return $tablestring;
 	}
 	
-	function getPlayers()
+	function getPlayerListing()
 	{
-		// not yet implemented
-		//$result = $this->players->getPlayers();
-		/*
-		$tablestring = "<table>";
-		$tablestring .= "<tr><td>Player</td></tr>";
+		$result = $this->players->getPlayers();
+		
+		$tablestring = "<tr><td>Player</td><td>Cash</td><td>Equity</td></tr>";
 		
 		foreach($result->result() as $row)
 		{
-			$tablestring .= "<tr><a href=\"";
-			$tablestring .= $row.name;
-			$tablestring .= "\">";
-			$tablestring .= $row.name;
-			$tablestring .= "</a></tr>";
+			$tablestring .= "<tr><td><a href='/player/".$row->Player."'>" . $row->Player . "</a></td>";
+			$tablestring .= "<td>" . $row->Cash . "</td>";
+			$tablestring .= "<td>" . $this->players->getPlayerEquity($row->Player) . "</td>";
+			$tablestring .= "</tr>";
 		}
 		
-		$tablestring .= "</table>";
-		*/
-		$tablestring = "";
 		return $tablestring;
 		
 	}
