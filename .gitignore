@@ -1,3 +1,4 @@
 .idea
 system3
 application/system3
+application/config/database.php
