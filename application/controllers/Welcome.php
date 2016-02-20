@@ -14,6 +14,7 @@ class Welcome extends Application
     function __construct()
     {
         parent::__construct();
+        session_start();
     }
     //-------------------------------------------------------------
     //  The normal pages

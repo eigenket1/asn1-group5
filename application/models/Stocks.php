@@ -1,53 +1,85 @@
 <?php
-class Stocks extends MY_Model {
+
+class Stocks extends MY_Model
+{
 
     // constructor
-    function __construct() {
+    function __construct()
+    {
         parent::__construct('stocks', 'Code');
     }
 
-	function getStocks($stockCode) {
-		$queryString = "SELECT * FROM `movements` WHERE `Code` = '";
-		$queryString .= $stockCode;
-		$queryString .= "' ORDER BY Datetime DESC";
-		$result = $this->db->query($queryString);
+    /**
+     * Returns all stock movements for the $stockCode specified
+     *
+     * @param $stockCode
+     * @return mixed
+     */
+    function getStocks($stockCode)
+    {
+        $queryString = "SELECT * FROM `movements` WHERE `Code` = '";
+        $queryString .= $stockCode;
+        $queryString .= "' ORDER BY Datetime DESC";
+        $result = $this->db->query($queryString);
 
-		return $result;
-	}
+        return $result;
+    }
 
-
-    function getCodes() {
+    /**
+     * Returns a list of unique stock codes available in the database
+     *
+     * @return mixed
+     */
+    function getCodes()
+    {
         $result = $this->db->query("SELECT COUNT(*) AS `Rows`, `Code` FROM `stocks` GROUP BY `Code` ORDER BY `Code`");
 
         return $result;
     }
 
-    function getRecentCode() {
+    /**
+     * Returns the most recently 'active' stock as determined by the 'movements' db table
+     *
+     * @return mixed
+     */
+    function getRecentCode()
+    {
         $querystring = "SELECT * FROM `movements` WHERE 1 ORDER BY Datetime DESC";
         $result = $this->db->query($querystring);
 
         return $result;
     }
-<<<<<<< Updated upstream
-	
-	function getStockValue($stockcode) {
-		$querystring = "SELECT `Value` FROM `stocks` WHERE `Code` = '";
-		$querystring .= $stockcode;
-		$querystring .= "'";
-		$result = $this->db->query($querystring);
-		
-		return $result;
-	}
-}
-=======
 
-    function getTransactions($stockcode) {
-        $querystring = "SELECT * FROM `transactions` WHERE Stock = \"";
-        $querystring .= $stockcode;
-        $querystring .= "\" ORDER BY Datetime DESC";
-        $result = $this->db->query($querystring);
+    /**
+     * Returns the value of specified $stockCode
+     *
+     * @param $stockCode
+     * @return mixed
+     */
+    function getStockValue($stockCode)
+    {
+        $queryString = "SELECT `Value` FROM `stocks` WHERE `Code` = '";
+        $queryString .= $stockCode;
+        $queryString .= "'";
+        $result = $this->db->query($queryString);
 
         return $result;
     }
+
+    /**
+     * Returns all the transactions associated with the specified $stockCode
+     *
+     * @param $stockCode
+     * @return mixed
+     */
+    function getTransactions($stockCode)
+    {
+        $queryString = "SELECT * FROM `transactions` WHERE Stock = \"";
+        $queryString .= $stockCode;
+        $queryString .= "\" ORDER BY Datetime DESC";
+        $result = $this->db->query($queryString);
+
+        return $result;
+    }
+
 }
->>>>>>> Stashed changes

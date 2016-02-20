@@ -16,7 +16,7 @@
 	<div class="large-6 columns">
 		<div class="panel">
 			<h4>Stock Holdings</h4>
-			{stocks}
+			{holdings}
 		</div>
 	</div>
 </div>

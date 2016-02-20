@@ -13,6 +13,7 @@ class Stock extends Application
 	function __construct()
 	{
 		parent::__construct();
+        session_start();
 	}
 
 	//-------------------------------------------------------------
@@ -92,7 +93,7 @@ class Stock extends Application
 	 			$tablestring .= "<td>";
 	 			$tablestring .= $row->Quantity;
 	 			$tablestring .= "</td>";
-	 			
+
 	 			$tablestring .= "</tr>";
 	 		}
 
