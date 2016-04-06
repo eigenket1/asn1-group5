@@ -1,6 +1,11 @@
 <h4>{currentPlayer}</h4>
 <form method="GET" id="player-select" action="/player/getSpecificPlayer" class="form-inline pull-right">
-	{players}
+	<select name="playerChoice" onchange="this.form.submit()">
+		<option value="">Select a Player</option>
+		{playerList}
+		<option value='{Player}'>{Player}</option>
+		{/playerList}
+	</select>
 </form>
 </div>
 </div>
@@ -10,13 +15,39 @@
 	<div class="large-6 columns">
 		<div class="panel">
 			<h4>Recent Activity</h4>
-			{activity}
+			<table style="width:100%;">
+				<tr>
+					<th>Date/Time</th>
+					<th>Stock</th>
+					<th>Trans</th>
+					<th>Qty</th>
+				</tr>
+				{playerActivities}
+				<tr>
+					<td>{DateTime}</td>
+					<td>{Stock}</td>
+					<td>{Trans}</td>
+					<td>{Quantity}</td>
+				</tr>
+				{/playerActivities}
+			</table>
 		</div>
 	</div>
 	<div class="large-6 columns">
 		<div class="panel">
 			<h4>Stock Holdings</h4>
-			{holdings}
+			<table style="width:100%;">
+				<tr>
+					<th>Date/Time</th>
+					<th>Stock</th>
+				</tr>
+				{playerHoldings}
+				<tr>
+					<td>{Stock}</td>
+					<td>{Quantity}</td>
+				</tr>
+				{/playerHoldings}
+			</table>
 		</div>
 	</div>
 </div>
