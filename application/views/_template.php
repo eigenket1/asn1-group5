@@ -44,13 +44,7 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="large-12 columns">
-        <div class="panel">
-            {content}
-        </div>
-    </div>
-</div>
+{content}
 
 <script src="/public/js/vendor/jquery.js"></script>
 <script src="/public/js/foundation.min.js"></script>
