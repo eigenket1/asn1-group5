@@ -1,4 +1,12 @@
 <div class="row">
+    <div class="large-12 columns">
+        <div class="panel">
+            <h4>Game Status: {gameStatus}Round #{round}, State: {state} ({desc}){/gameStatus}</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
     <div class="large-6 columns">
         <div class="panel">
             <h4>Stock List</h4>
