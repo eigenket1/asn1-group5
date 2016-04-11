@@ -32,7 +32,7 @@ class Stocks extends MY_Model
      */
     function getCodes()
     {
-        $result = $this->db->query("SELECT COUNT(*) AS `Rows`, `Code` FROM `stocks` GROUP BY `Code` ORDER BY `Code`");
+        $result = $this->db->query("SELECT COUNT(*) AS `Rows`, `Code`, `Value` FROM `stocks` GROUP BY `Code` ORDER BY `Code`");
 
         return $result;
     }
