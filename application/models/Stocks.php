@@ -58,7 +58,7 @@ class Stocks extends MY_Model
      */
     function getStockValue($stockCode)
     {
-        $queryString = "SELECT `Value` FROM `stocks` WHERE `Code` = '";
+        $queryString = "SELECT * FROM `stocks` WHERE `Code` = '";
         $queryString .= $stockCode;
         $queryString .= "'";
         $result = $this->db->query($queryString);
