@@ -30,7 +30,7 @@
                     echo "<li><a href='/login/logout'>Logout</a></li>";
                     echo "<li><a href='/player/" . $_SESSION['player'] . "'>" . $_SESSION['player'] . "</a></li>";
                 } else {
-                    echo "<li><a href='/login'>Login</a></li>";
+                    echo "<li><a href='/login'>Login / Register</a></li>";
                 }
                 ?>
             </ul>

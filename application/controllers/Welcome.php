@@ -28,22 +28,9 @@ class Welcome extends Application
         $this->data['stockCodes'] = $this->stocks->getCodes()->result();
         $this->data['playerList'] = $this->players->getPlayersAndEquity();
 
-        $this->data['gameStatus'] = $this->getGameStatus();
+        $this->data['gameStatus'] = $this->game->getStatus();
 
         $this->render();
-    }
-
-    function getGameStatus()
-    {
-        $url = API_URL . 'status';
-        $xml = simplexml_load_file($url);
-        return array(
-            array(
-                'round' => $xml->round,
-                'state' => $xml->state,
-                'desc' => $xml->desc
-            )
-        );
     }
 
 }
