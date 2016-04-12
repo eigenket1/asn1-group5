@@ -51,6 +51,19 @@ class Stocks extends MY_Model
     }
 
     /**
+     * Returns the most recent $numberOfMovements stock movements
+     *
+     * @return mixed
+     */
+    function getRecentMovements($numberOfMovements)
+    {
+        $querystring = "SELECT * FROM `movements` WHERE 1 ORDER BY Datetime DESC LIMIT " . $numberOfMovements;
+        $result = $this->db->query($querystring);
+
+        return $result;
+    }
+
+    /**
      * Returns the value of specified $stockCode
      *
      * @param $stockCode
@@ -77,6 +90,20 @@ class Stocks extends MY_Model
         $queryString = "SELECT * FROM `transactions` WHERE Stock = \"";
         $queryString .= $stockCode;
         $queryString .= "\" ORDER BY Datetime DESC";
+        $result = $this->db->query($queryString);
+
+        return $result;
+    }
+
+    /**
+     * Returns the $numberOfTransactions most recent transactions
+     *
+     * @param $stockCode
+     * @return mixed
+     */
+    function getRecentTransactions($stockCode)
+    {
+        $queryString = "SELECT * FROM `transactions` ORDER BY Datetime DESC LIMIT " . $stockCode;
         $result = $this->db->query($queryString);
 
         return $result;

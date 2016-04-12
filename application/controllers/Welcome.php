@@ -23,6 +23,8 @@ class Welcome extends Application
     {
         $this->data['pagebody'] = 'homepage';
 
+        $this->data['recentMovements'] = $this->stocks->getRecentMovements(5)->result();
+        $this->data['recentTransactions'] = $this->stocks->getRecentTransactions(5)->result();
         $this->data['stockCodes'] = $this->stocks->getCodes()->result();
         $this->data['playerList'] = $this->players->getPlayersAndEquity();
 
@@ -33,7 +35,7 @@ class Welcome extends Application
 
     function getGameStatus()
     {
-        $url = 'http://bsx.jlparry.com/status';
+        $url = API_URL . 'status';
         $xml = simplexml_load_file($url);
         return array(
             array(

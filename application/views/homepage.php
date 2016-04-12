@@ -9,6 +9,53 @@
 <div class="row">
     <div class="large-6 columns">
         <div class="panel">
+            <h4>Recent Movements</h4>
+            <table style="width:100%">
+                <tr>
+                    <th>Code</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                    <th>Value</th>
+                </tr>
+                {recentMovements}
+                <tr>
+                    <td>{Code}</td>
+                    <td>{Datetime}</td>
+                    <td>{Action}</td>
+                    <td>{Amount}</td>
+                </tr>
+                {/recentMovements}
+            </table>
+        </div>
+    </div>
+    <div class="large-6 columns">
+        <div class="panel">
+            <h4>Recent Transactions</h4>
+            <table style="width:100%">
+                <tr>
+                    <th>Code</th>
+                    <th>Time</th>
+                    <th>Player</th>
+                    <th>Action</th>
+                    <th>Value</th>
+                </tr>
+                {recentTransactions}
+                <tr>
+                    <td>{Stock}</td>
+                    <td>{DateTime}</td>
+                    <td>{Player}</td>
+                    <td>{Trans}</td>
+                    <td>{Quantity}</td>
+                </tr>
+                {/recentTransactions}
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-6 columns">
+        <div class="panel">
             <h4>Stock List</h4>
             <table style="width:100%">
                 <tr>
