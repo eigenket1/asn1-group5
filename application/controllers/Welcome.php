@@ -23,25 +23,14 @@ class Welcome extends Application
     {
         $this->data['pagebody'] = 'homepage';
 
+        $this->data['recentMovements'] = $this->stocks->getRecentMovements(5)->result();
+        $this->data['recentTransactions'] = $this->stocks->getRecentTransactions(5)->result();
         $this->data['stockCodes'] = $this->stocks->getCodes()->result();
         $this->data['playerList'] = $this->players->getPlayersAndEquity();
 
-        $this->data['gameStatus'] = $this->getGameStatus();
+        $this->data['gameStatus'] = $this->game->getStatus();
 
         $this->render();
-    }
-
-    function getGameStatus()
-    {
-        $url = 'http://bsx.jlparry.com/status';
-        $xml = simplexml_load_file($url);
-        return array(
-            array(
-                'round' => $xml->round,
-                'state' => $xml->state,
-                'desc' => $xml->desc
-            )
-        );
     }
 
 }

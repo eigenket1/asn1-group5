@@ -36,6 +36,46 @@ class Login extends Application
     }
 
     /**
+     * Register a new user
+     */
+    function register()
+    {
+        $this->load->spark('restclient/2.1.0');
+        $this->load->library('rest');
+
+        $registerError = array();
+        $registerTeam = $_POST['team'];
+        $registerUsername = $_POST['username'];
+        $registerPassword = $_POST['password'];
+
+        echo $registerTeam . " :: " . $registerUsername . " :: " . $registerPassword;
+
+        if (empty($registerTeam)) {
+            $registerError[] = "You must enter a team.";
+        }
+        if (empty($registerUsername)) {
+            $registerError[] = "You must enter a username.";
+        }
+        if (empty($registerPassword)) {
+            $registerError[] = "You must enter a password.";
+        }
+
+        var_dump($this->game->registerUser($registerTeam, $registerUsername, $registerPassword));
+
+        if (empty($registerError) /*&& $registerResult == 1*/) {
+            $this->data['registerMessage'] = "You have successfully registered.";
+        } else {
+            $this->data['registerMessage'] = "Please fix the below errors to continue.";
+        }
+
+        $this->data['registerError'] = implode(" ", $registerError);
+        $this->data['pagebody'] = "loginresult";
+
+        $this->data['pagebody'] = "loginresult";
+        $this->render();
+    }
+
+    /**
      * Process user logout
      */
     function logout()
