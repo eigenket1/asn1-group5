@@ -14,7 +14,6 @@
         </div>
     </div>
 </div>
-
 <div class="row">
     <div class="large-6 columns">
         <div class="panel">
@@ -23,8 +22,8 @@
                 <tr>
                     <th>Date/Time</th>
                     <th>Stock</th>
-                    <th>Trans</th>
-                    <th>Qty</th>
+                    <th>Transaction</th>
+                    <th>Quantity</th>
                 </tr>
                 {playerActivities}
                 <tr>

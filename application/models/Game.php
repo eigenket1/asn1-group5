@@ -36,7 +36,7 @@ class Game extends MY_Model
     {
         $this->rest->initialize(array('server' => API_URL));
         return $this->rest->get(
-            'register?team=' . $userTeam . '&user=' . $userName . '&password=' . 'tuesday'
+            'register?team=' . $userTeam . '&user=' . $userName . '&password=' . 'Tuesday'
         );
     }
 
