@@ -31,12 +31,25 @@ class Game extends MY_Model
             )
         );
     }
-
+	
+	/**
+     * Adds a player to the DB
+     *
+     * @param string $userTeam  
+	 * @param string $userName
+	 * @param string $userPassword
+     * @return mixed
+     */
     function registerUser($userTeam, $userName, $userPassword)
     {
         $this->rest->initialize(array('server' => API_URL));
+		
+		$queryString = "INSERT INTO `players` (Team, Player, Password)".
+			" VALUES ('$userTeam','$userName','$userPassword')";
+			
+		$this->db->query($queryString);
         return $this->rest->get(
-            'register?team=' . $userTeam . '&user=' . $userName . '&password=' . 'Tuesday'
+            'register?team=' . $userTeam . '&user=' . $userName . '&password=' . $userPassword
         );
     }
 
